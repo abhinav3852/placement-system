@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get("/", (req, res) => res.send("Backend Running"));
 
-const studentRoutes = require("./routes/studentRoutes");
+const studentRoutes = require('./routes/studentRoutes');
 app.use("/api/students", studentRoutes);
 
 const PORT = process.env.PORT || 5000;
