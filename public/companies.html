@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Companies – Placement Management System</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      overflow-y: scroll;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #141e30, #243b55);
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      color: #03e9f4;
+      text-shadow: 0 0 15px #03e9f4;
+      border-bottom: 1px solid #03e9f4;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 15px;
+    }
+
+    .search-box {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #03e9f4;
+      outline: none;
+      width: 300px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .company-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #03e9f4;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(3, 233, 244, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .company-card:hover {
+      transform: scale(1.05);
+    }
+
+    .company-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .company-card h3 {
+      margin: 10px 0 5px;
+      color: #03e9f4;
+    }
+
+    .company-card p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .view-jobs-btn {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #03e9f4;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.5s;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border: 1px solid #03e9f4;
+    }
+
+    .view-jobs-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #03e9f4,
+                  0 0 25px #03e9f4,
+                  0 0 50px #03e9f4,
+                  0 0 100px #03e9f4;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header>Registered Companies</header>
+
+  <nav>
+    <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+  <a href="jobs.html" class="nav-btn">JOBS</a>
+  <a href="companies.html" class="nav-btn">COMPANIES</a>
+  <a href="profile.html" class="nav-btn">PROFILE</a>
+  <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+  <a href="resume.html" class="nav-btn">RESUME</a>
+    <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+	<a href="analytics.html" class="nav-btn">ANALYTICS</a>
+  </nav>
+
+  <div class="controls">
+    <input type="text" id="companySearch" class="search-box" placeholder="Search companies...">
+  </div>
+
+  <div class="container" id="companyContainer">
+    <!-- Company cards inserted here -->
+    <!-- These cards will be filtered in real-time -->
+    <!-- Example cards below -->
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/google.com" alt="Google Logo" />
+      <h3>Google</h3>
+      <p>Top tech firm with global presence.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/tcs.com" alt="TCS Logo" />
+      <h3>TCS</h3>
+      <p>India’s largest IT services company.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/infosys.com" alt="Infosys Logo" />
+      <h3>Infosys</h3>
+      <p>Global leader in digital services & consulting.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo" />
+      <h3>Microsoft</h3>
+      <p>Empowering every person and organization to achieve more.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/ibm.com" alt="IBM Logo" />
+      <h3>IBM</h3>
+      <p>Leading global hybrid cloud and AI services provider.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/deloitte.com" alt="Deloitte Logo" />
+      <h3>Deloitte</h3>
+      <p>Global leader in audit, consulting, tax, and advisory services.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/capgemini.com" alt="Capgemini Logo" />
+      <h3>Capgemini</h3>
+      <p>Global leader in consulting and digital transformation.</p>
+      <button class="view-jobs-btn">View Jobs</button>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('companySearch');
+    const companyCards = document.querySelectorAll('.company-card');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+
+      companyCards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+
+        if (name.includes(query) || desc.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Applications – Placement Management System</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#141e30, #243b55);
+      color: #fff;
+      overflow-y: auto;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      color: #03e9f4;
+      text-shadow: 0 0 10px #03e9f4;
+      border-bottom: 1px solid #03e9f4;
+    }
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .nav-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(3, 233, 244, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 16px;
+      border: 1px solid #03e9f4;
+      text-align: left;
+    }
+    th {
+      background-color: #03e9f4;
+      color: #000;
+    }
+    .status {
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #000;
+    }
+    .applied { background-color: #3498db; }
+    .shortlisted { background-color: #f1c40f; }
+    .interview { background-color: #9b59b6; }
+    .selected { background-color: #2ecc71; }
+    .rejected { background-color: #e74c3c; }
+  </style>
+</head>
+<body>
+  <header>MY APPLICATIONS</header>
+  <nav>
+    <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+    <a href="jobs.html" class="nav-btn">JOBS</a>
+    <a href="companies.html" class="nav-btn">COMPANIES</a>
+    <a href="profile.html" class="nav-btn">PROFILE</a>
+    <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+    <a href="resume.html" class="nav-btn">RESUME</a>
+    <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+    <a href="analytics.html" class="nav-btn">ANALYTICS</a>
+  </nav>
+
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Job Title</th>
+          <th>Company</th>
+          <th>Date Applied</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 50 Sample Applications -->
+        <tr><td>Software Engineer</td><td>Google</td><td>2025-05-15</td><td><span class="status shortlisted">Shortlisted</span></td></tr>
+        <tr><td>Frontend Developer</td><td>Amazon</td><td>2025-05-16</td><td><span class="status interview">Interview</span></td></tr>
+        <tr><td>Data Analyst</td><td>TCS</td><td>2025-05-17</td><td><span class="status applied">Applied</span></td></tr>
+        <tr><td>Backend Developer</td><td>Wipro</td><td>2025-05-18</td><td><span class="status rejected">Rejected</span></td></tr>
+        <tr><td>DevOps Engineer</td><td>Microsoft</td><td>2025-05-19</td><td><span class="status selected">Selected</span></td></tr>
+        <tr><td>Cybersecurity Intern</td><td>Accenture</td><td>2025-05-20</td><td><span class="status shortlisted">Shortlisted</span></td></tr>
+        <tr><td>AI Researcher</td><td>IBM</td><td>2025-05-21</td><td><span class="status interview">Interview</span></td></tr>
+        <tr><td>UI/UX Designer</td><td>Infosys</td><td>2025-05-22</td><td><span class="status applied">Applied</span></td></tr>
+        <tr><td>Cloud Engineer</td><td>Oracle</td><td>2025-05-23</td><td><span class="status rejected">Rejected</span></td></tr>
+        <tr><td>Mobile App Developer</td><td>Flipkart</td><td>2025-05-24</td><td><span class="status shortlisted">Shortlisted</span></td></tr>
+        <!-- ... 40+ more like above ... -->
+        <!-- Placeholder to show page supports scrolling -->
+        <tr><td>QA Tester</td><td>Adobe</td><td>2025-05-25</td><td><span class="status interview">Interview</span></td></tr>
+        <tr><td>Full Stack Developer</td><td>Zoho</td><td>2025-05-26</td><td><span class="status selected">Selected</span></td></tr>
+        <tr><td>Machine Learning Intern</td><td>NVIDIA</td><td>2025-05-27</td><td><span class="status applied">Applied</span></td></tr>
+        <tr><td>Technical Writer</td><td>LinkedIn</td><td>2025-05-28</td><td><span class="status rejected">Rejected</span></td></tr>
+        <tr><td>IT Support Engineer</td><td>Capgemini</td><td>2025-05-29</td><td><span class="status selected">Selected</span></td></tr>
+        <tr><td>Database Admin</td><td>HCL</td><td>2025-05-30</td><td><span class="status shortlisted">Shortlisted</span></td></tr>
+        <tr><td>Tech Consultant</td><td>Deloitte</td><td>2025-06-01</td><td><span class="status interview">Interview</span></td></tr>
+        <tr><td>Game Developer</td><td>Ubisoft</td><td>2025-06-02</td><td><span class="status applied">Applied</span></td></tr>
+        <tr><td>Network Engineer</td><td>Cisco</td><td>2025-06-03</td><td><span class="status shortlisted">Shortlisted</span></td></tr>
+        <tr><td>Systems Analyst</td><td>Intel</td><td>2025-06-04</td><td><span class="status rejected">Rejected</span></td></tr>
+        <!-- (You can duplicate more rows if needed for demo/testing) -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

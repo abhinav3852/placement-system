@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jobs – Placement Management System</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      overflow-y: scroll;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #141e30, #243b55);
+      color: #fff;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      color: #03e9f4;
+      text-shadow: 0 0 15px #03e9f4;
+      border-bottom: 1px solid #03e9f4;
+    }
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .nav-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 20px 10px;
+    }
+    .search-box,
+    .filter-select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #03e9f4;
+      outline: none;
+      width: 220px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .job-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #03e9f4;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(3, 233, 244, 0.3);
+      transition: transform 0.2s;
+    }
+    .job-card:hover {
+      transform: scale(1.02);
+    }
+    .job-card h3 {
+      margin-top: 0;
+      color: #03e9f4;
+    }
+    .job-card p {
+      margin: 8px 0;
+    }
+    .apply-button {
+      display: inline-block;
+      padding: 10px 20px;
+      color: #03e9f4;
+      background: transparent;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    .apply-button:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 30px #03e9f4;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header>Available Job Opportunities</header>
+  <nav>
+    <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+    <a href="jobs.html" class="nav-btn">JOBS</a>
+    <a href="companies.html" class="nav-btn">COMPANIES</a>
+    <a href="profile.html" class="nav-btn">PROFILE</a>
+    <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+    <a href="resume.html" class="nav-btn">RESUME</a>
+    <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+    <a href="analytics.html" class="nav-btn">ANALYTICS</a>
+  </nav>
+  <div class="controls">
+    <input type="text" id="searchInput" class="search-box" placeholder="Search jobs...">
+    <select id="categoryFilter" class="filter-select">
+      <option value="">All Categories</option>
+      <option value="engineering">Engineering</option>
+      <option value="data">Data</option>
+      <option value="design">Design</option>
+      <option value="business">Business</option>
+      <option value="security">Security</option>
+    </select>
+  </div>
+  <div class="container" id="jobContainer">
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – IBM</h3>
+      <p><strong>Location:</strong> Noida</p>
+      <p><strong>Salary:</strong> ₹12.4 LPA</p>
+      <p><strong>Deadline:</strong> August 17, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹6.3 LPA</p>
+      <p><strong>Deadline:</strong> June 10, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="design">
+      <h3>UI/UX Designer – Google</h3>
+      <p><strong>Location:</strong> Delhi</p>
+      <p><strong>Salary:</strong> ₹14.1 LPA</p>
+      <p><strong>Deadline:</strong> July 24, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Capgemini</h3>
+      <p><strong>Location:</strong> Delhi</p>
+      <p><strong>Salary:</strong> ₹12.0 LPA</p>
+      <p><strong>Deadline:</strong> August 01, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="design">
+      <h3>UI/UX Designer – Capgemini</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹15.1 LPA</p>
+      <p><strong>Deadline:</strong> August 20, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Capgemini</h3>
+      <p><strong>Location:</strong> Pune</p>
+      <p><strong>Salary:</strong> ₹12.7 LPA</p>
+      <p><strong>Deadline:</strong> July 03, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – IBM</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹11.2 LPA</p>
+      <p><strong>Deadline:</strong> July 04, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Deloitte</h3>
+      <p><strong>Location:</strong> Mumbai</p>
+      <p><strong>Salary:</strong> ₹10.0 LPA</p>
+      <p><strong>Deadline:</strong> August 19, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="design">
+      <h3>UI/UX Designer – IBM</h3>
+      <p><strong>Location:</strong> Delhi</p>
+      <p><strong>Salary:</strong> ₹13.7 LPA</p>
+      <p><strong>Deadline:</strong> June 12, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Gurugram</p>
+      <p><strong>Salary:</strong> ₹15.7 LPA</p>
+      <p><strong>Deadline:</strong> July 22, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Amazon</h3>
+      <p><strong>Location:</strong> Kolkata</p>
+      <p><strong>Salary:</strong> ₹9.1 LPA</p>
+      <p><strong>Deadline:</strong> August 08, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Bangalore</p>
+      <p><strong>Salary:</strong> ₹6.1 LPA</p>
+      <p><strong>Deadline:</strong> July 01, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – IBM</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹11.8 LPA</p>
+      <p><strong>Deadline:</strong> July 11, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Amazon</h3>
+      <p><strong>Location:</strong> Hyderabad</p>
+      <p><strong>Salary:</strong> ₹9.1 LPA</p>
+      <p><strong>Deadline:</strong> June 07, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Microsoft</h3>
+      <p><strong>Location:</strong> Delhi</p>
+      <p><strong>Salary:</strong> ₹8.0 LPA</p>
+      <p><strong>Deadline:</strong> August 18, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="design">
+      <h3>UI/UX Designer – Google</h3>
+      <p><strong>Location:</strong> Kolkata</p>
+      <p><strong>Salary:</strong> ₹10.4 LPA</p>
+      <p><strong>Deadline:</strong> July 12, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="design">
+      <h3>UI/UX Designer – Capgemini</h3>
+      <p><strong>Location:</strong> Pune</p>
+      <p><strong>Salary:</strong> ₹12.6 LPA</p>
+      <p><strong>Deadline:</strong> June 21, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Zomato</h3>
+      <p><strong>Location:</strong> Kolkata</p>
+      <p><strong>Salary:</strong> ₹10.8 LPA</p>
+      <p><strong>Deadline:</strong> June 21, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹10.8 LPA</p>
+      <p><strong>Deadline:</strong> July 26, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Flipkart</h3>
+      <p><strong>Location:</strong> Hyderabad</p>
+      <p><strong>Salary:</strong> ₹15.1 LPA</p>
+      <p><strong>Deadline:</strong> June 08, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Zomato</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹8.8 LPA</p>
+      <p><strong>Deadline:</strong> August 09, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Flipkart</h3>
+      <p><strong>Location:</strong> Noida</p>
+      <p><strong>Salary:</strong> ₹14.6 LPA</p>
+      <p><strong>Deadline:</strong> June 12, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Amazon</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹8.0 LPA</p>
+      <p><strong>Deadline:</strong> August 20, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Flipkart</h3>
+      <p><strong>Location:</strong> Mumbai</p>
+      <p><strong>Salary:</strong> ₹9.9 LPA</p>
+      <p><strong>Deadline:</strong> June 16, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – TCS</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹6.5 LPA</p>
+      <p><strong>Deadline:</strong> June 07, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Capgemini</h3>
+      <p><strong>Location:</strong> Kolkata</p>
+      <p><strong>Salary:</strong> ₹15.5 LPA</p>
+      <p><strong>Deadline:</strong> July 05, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Capgemini</h3>
+      <p><strong>Location:</strong> Bangalore</p>
+      <p><strong>Salary:</strong> ₹6.9 LPA</p>
+      <p><strong>Deadline:</strong> July 25, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Kolkata</p>
+      <p><strong>Salary:</strong> ₹12.3 LPA</p>
+      <p><strong>Deadline:</strong> June 21, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – TCS</h3>
+      <p><strong>Location:</strong> Gurugram</p>
+      <p><strong>Salary:</strong> ₹14.3 LPA</p>
+      <p><strong>Deadline:</strong> August 25, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – TCS</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹14.7 LPA</p>
+      <p><strong>Deadline:</strong> July 23, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Google</h3>
+      <p><strong>Location:</strong> Ahmedabad</p>
+      <p><strong>Salary:</strong> ₹16.0 LPA</p>
+      <p><strong>Deadline:</strong> June 23, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Zomato</h3>
+      <p><strong>Location:</strong> Mumbai</p>
+      <p><strong>Salary:</strong> ₹14.4 LPA</p>
+      <p><strong>Deadline:</strong> June 30, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Flipkart</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹10.3 LPA</p>
+      <p><strong>Deadline:</strong> June 30, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – IBM</h3>
+      <p><strong>Location:</strong> Bangalore</p>
+      <p><strong>Salary:</strong> ₹9.6 LPA</p>
+      <p><strong>Deadline:</strong> June 10, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Amazon</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹11.7 LPA</p>
+      <p><strong>Deadline:</strong> July 17, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Capgemini</h3>
+      <p><strong>Location:</strong> Gurugram</p>
+      <p><strong>Salary:</strong> ₹12.0 LPA</p>
+      <p><strong>Deadline:</strong> June 16, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Capgemini</h3>
+      <p><strong>Location:</strong> Hyderabad</p>
+      <p><strong>Salary:</strong> ₹6.4 LPA</p>
+      <p><strong>Deadline:</strong> June 08, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – Flipkart</h3>
+      <p><strong>Location:</strong> Hyderabad</p>
+      <p><strong>Salary:</strong> ₹6.1 LPA</p>
+      <p><strong>Deadline:</strong> June 25, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="security">
+      <h3>Cybersecurity Analyst – TCS</h3>
+      <p><strong>Location:</strong> Gurugram</p>
+      <p><strong>Salary:</strong> ₹9.6 LPA</p>
+      <p><strong>Deadline:</strong> June 23, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – TCS</h3>
+      <p><strong>Location:</strong> Noida</p>
+      <p><strong>Salary:</strong> ₹12.6 LPA</p>
+      <p><strong>Deadline:</strong> June 23, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Google</h3>
+      <p><strong>Location:</strong> Noida</p>
+      <p><strong>Salary:</strong> ₹9.5 LPA</p>
+      <p><strong>Deadline:</strong> June 11, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Zomato</h3>
+      <p><strong>Location:</strong> Pune</p>
+      <p><strong>Salary:</strong> ₹6.2 LPA</p>
+      <p><strong>Deadline:</strong> July 09, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Google</h3>
+      <p><strong>Location:</strong> Bangalore</p>
+      <p><strong>Salary:</strong> ₹10.1 LPA</p>
+      <p><strong>Deadline:</strong> August 20, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Microsoft</h3>
+      <p><strong>Location:</strong> Noida</p>
+      <p><strong>Salary:</strong> ₹6.3 LPA</p>
+      <p><strong>Deadline:</strong> August 18, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Google</h3>
+      <p><strong>Location:</strong> Gurugram</p>
+      <p><strong>Salary:</strong> ₹11.8 LPA</p>
+      <p><strong>Deadline:</strong> August 26, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Deloitte</h3>
+      <p><strong>Location:</strong> Mumbai</p>
+      <p><strong>Salary:</strong> ₹9.0 LPA</p>
+      <p><strong>Deadline:</strong> August 19, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Capgemini</h3>
+      <p><strong>Location:</strong> Delhi</p>
+      <p><strong>Salary:</strong> ₹14.0 LPA</p>
+      <p><strong>Deadline:</strong> June 12, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="engineering">
+      <h3>Software Engineer – Deloitte</h3>
+      <p><strong>Location:</strong> Mumbai</p>
+      <p><strong>Salary:</strong> ₹13.2 LPA</p>
+      <p><strong>Deadline:</strong> July 25, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="business">
+      <h3>Business Analyst – Amazon</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹9.8 LPA</p>
+      <p><strong>Deadline:</strong> August 12, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+    <div class="job-card" data-category="data">
+      <h3>Data Analyst – Infosys</h3>
+      <p><strong>Location:</strong> Chennai</p>
+      <p><strong>Salary:</strong> ₹9.8 LPA</p>
+      <p><strong>Deadline:</strong> July 01, 2025</p>
+      <button class="apply-button">Apply Now</button>
+    </div>
+  </div>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const jobCards = document.querySelectorAll('.job-card');
+
+    function filterJobs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      jobCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const category = card.getAttribute('data-category');
+        const matchesSearch = text.includes(searchTerm);
+        const matchesCategory = !selectedCategory || category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterJobs);
+    categoryFilter.addEventListener('change', filterJobs);
+  </script>
+</body>
+</html>

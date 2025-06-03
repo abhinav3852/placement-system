@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Placement Management Dashboard</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #141e30, #243b55);
+      color: #fff;
+      overflow-y: scroll;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 20px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #03e9f4;
+    }
+    header img {
+      height: 50px;
+      margin-right: 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #03e9f4;
+      text-shadow: 0 0 10px #03e9f4;
+    }
+    nav {
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .nav-btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+    .search-section {
+      text-align: center;
+      margin: 20px auto 10px;
+    }
+    #searchBox {
+      padding: 12px 16px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      background: rgba(255,255,255,0.1);
+      color: #03e9f4;
+    }
+    #searchBox::placeholder {
+      color: #ccc;
+    }
+    form {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 0 15px rgba(3, 233, 244, 0.2);
+    }
+    .user-box {
+      position: relative;
+      margin-bottom: 25px;
+    }
+    .user-box input,
+    .user-box select {
+      width: 100%;
+      padding: 10px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      color: #fff;
+      font-size: 16px;
+    }
+    .user-box label {
+      position: absolute;
+      top: 0; left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: 0.5s;
+    }
+    .user-box input:focus ~ label,
+    .user-box input:valid ~ label,
+    .user-box select:focus ~ label,
+    .user-box select:valid ~ label {
+      top: -20px;
+      color: #03e9f4;
+      font-size: 12px;
+    }
+    .nav-box {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .nav-box a {
+      margin: 5px;
+    }
+    table {
+      width: 95%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-collapse: collapse;
+      border: 1px solid #555;
+      box-shadow: 0 0 10px rgba(3, 233, 244, 0.2);
+    }
+    th, td {
+      border: 1px solid #555;
+      padding: 10px;
+      text-align: left;
+    }
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .action-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #fff;
+      margin-right: 5px;
+    }
+    .edit-btn { background-color: #03a9f4; }
+    .edit-btn:hover { background-color: #0288d1; }
+    .delete-btn { background-color: #e91e63; }
+    .delete-btn:hover { background-color: #ad1457; }
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      header h1 { font-size: 20px; }
+      table, form { width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" />
+      <h1>Placement Management System</h1>
+    </div>
+  </header>
+
+  <nav>
+    <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+  <a href="jobs.html" class="nav-btn">JOBS</a>
+  <a href="companies.html" class="nav-btn">COMPANIES</a>
+  <a href="profile.html" class="nav-btn">PROFILE</a>
+  <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+  <a href="resume.html" class="nav-btn">RESUME</a>
+    <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+	<a href="analytics.html" class="nav-btn">ANALYTICS</a>
+    <a href="#" id="logoutBtn" class="nav-btn">LOGOUT</a>
+  </nav>
+
+  <div class="search-section">
+    <input type="text" id="searchBox" placeholder="Search student name, roll number, or company...">
+  </div>
+
+  <form id="placementForm" style="display:none;">
+    <div class="user-box">
+      <input type="text" id="name" required />
+      <label>Student Name</label>
+    </div>
+    <div class="user-box">
+      <input type="text" id="roll" required />
+      <label>Roll Number</label>
+    </div>
+    <div class="user-box">
+      <input type="text" id="company" required />
+      <label>Company Name</label>
+    </div>
+    <div class="user-box">
+      <select id="status" required>
+        <option value="" disabled selected></option>
+        <option value="Selected">Selected</option>
+        <option value="Pending">Pending</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+      <label>Status</label>
+    </div>
+    <div class="user-box">
+      <input type="url" id="photo" />
+      <label>Photo URL (optional)</label>
+    </div>
+    <div class="nav-box">
+      <a href="#" onclick="document.getElementById('placementForm').dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));" class="nav-btn">Add Record</a>
+      <a href="#" onclick="exportToCSV()" class="nav-btn">Export to CSV</a>
+    </div>
+  </form>
+
+  <table id="placementTable">
+    <thead>
+      <tr>
+        <th>Photo</th><th>Student Name</th><th>Roll Number</th><th>Company</th><th>Status</th><th id="actionsHeader" style="display:none;">Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (!loggedInUser) window.location.href = 'index.html';
+    const isAdmin = loggedInUser === 'admin';
+    const form = document.getElementById('placementForm'),
+          tableBody = document.querySelector('#placementTable tbody'),
+          searchBox = document.getElementById('searchBox'),
+          actionsHeader = document.getElementById('actionsHeader');
+
+    if (isAdmin) {
+      form.style.display = 'block';
+      actionsHeader.style.display = 'table-cell';
+    }
+
+    function loadRecords(filter = '') {
+      const records = JSON.parse(localStorage.getItem('placements') || '[]');
+      tableBody.innerHTML = '';
+      let filtered = records.filter(r =>
+        r.name.toLowerCase().includes(filter.toLowerCase()) ||
+        r.roll.toLowerCase().includes(filter.toLowerCase()) ||
+        r.company.toLowerCase().includes(filter.toLowerCase())
+      );
+      if (!isAdmin) filtered = filtered.filter(r => r.roll.toLowerCase() === loggedInUser.toLowerCase());
+      filtered.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img class="profile-pic" src="${r.photo || 'https://via.placeholder.com/40'}" alt="photo"/></td>
+          <td>${r.name}</td>
+          <td>${r.roll}</td>
+          <td>${r.company}</td>
+          <td>${r.status}</td>
+          ${isAdmin ? `<td>
+            <button class="action-btn edit-btn" onclick="editRecord(${i})">Edit</button>
+            <button class="action-btn delete-btn" onclick="deleteRecord(${i})">Delete</button>
+          </td>` : ''}
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function deleteRecord(i) {
+      if (!isAdmin) return alert('Not authorized');
+      let rs = JSON.parse(localStorage.getItem('placements'));
+      rs.splice(i, 1);
+      localStorage.setItem('placements', JSON.stringify(rs));
+      loadRecords(searchBox.value);
+    }
+
+    function editRecord(i) {
+      if (!isAdmin) return alert('Not authorized');
+      let rs = JSON.parse(localStorage.getItem('placements')),
+          r = rs[i];
+      ['name','roll','company','status','photo'].forEach(f => document.getElementById(f).value = r[f]);
+      rs.splice(i, 1);
+      localStorage.setItem('placements', JSON.stringify(rs));
+      loadRecords(searchBox.value);
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!isAdmin) return alert('Not authorized');
+      let [n, rl, c, s, p] = ['name','roll','company','status','photo'].map(f => document.getElementById(f).value);
+      let newRec = { name: n, roll: rl, company: c, status: s, photo: p };
+      let rs = JSON.parse(localStorage.getItem('placements') || '[]');
+      rs.push(newRec);
+      localStorage.setItem('placements', JSON.stringify(rs));
+      form.reset();
+      loadRecords(searchBox.value);
+    });
+
+    searchBox.addEventListener('input', () => loadRecords(searchBox.value));
+
+    function exportToCSV() {
+      if (!isAdmin) return alert('Not authorized');
+      let rs = JSON.parse(localStorage.getItem('placements') || '[]');
+      if (!rs.length) return alert('No data to export');
+      let csv = [['Name','Roll','Company','Status','Photo'], ...rs.map(r => [r.name, r.roll, r.company, r.status, r.photo])].map(r => r.join(',')).join('\n');
+      let blob = new Blob([csv], { type: 'text/csv' });
+      let a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'placement_records.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'index.html';
+    });
+
+    loadRecords();
+  </script>
+</body>
+</html>

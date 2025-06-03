@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile – Placement Management System</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0 20px 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #141e30, #243b55);
+      color: #fff;
+      overflow-y: scroll;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      color: #03e9f4;
+      text-shadow: 0 0 10px #03e9f4;
+      font-size: 28px;
+      border-bottom: 1px solid #03e9f4;
+    }
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .nav-btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.5);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(3, 233, 244, 0.2);
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #03e9f4;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #bbb;
+    }
+    #profilePicPreview {
+      display: block;
+      margin: 20px auto 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #03e9f4;
+      box-shadow: 0 0 10px #03e9f4;
+    }
+    .save-btn {
+      margin-top: 30px;
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      color: #03e9f4;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .save-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+  </style>
+</head>
+<body>
+  <header>My Profile</header>
+  <nav>
+     <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+  <a href="jobs.html" class="nav-btn">JOBS</a>
+  <a href="companies.html" class="nav-btn">COMPANIES</a>
+  <a href="profile.html" class="nav-btn">PROFILE</a>
+  <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+  <a href="resume.html" class="nav-btn">RESUME</a>
+    <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+  </nav>
+
+  <div class="container">
+    <label for="profilePic">Profile Picture</label>
+    <input type="file" id="profilePic" accept="image/*" />
+    <img id="profilePicPreview" src="https://via.placeholder.com/100" alt="Profile Preview" />
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email" />
+
+    <label for="bio">Short Bio</label>
+    <textarea id="bio" rows="3" placeholder="Write a short bio..."></textarea>
+
+    <label for="roll">Roll Number</label>
+    <input type="text" id="roll" placeholder="Enter your roll number" />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number" />
+
+    <label for="resume">Resume Link</label>
+    <input type="url" id="resume" placeholder="Enter resume URL (e.g., Google Drive link)" />
+
+    <label for="skills">Skills</label>
+    <input type="text" id="skills" placeholder="e.g., Java, Python, SQL" />
+
+    <label for="address">Address</label>
+    <textarea id="address" rows="2" placeholder="Enter your address"></textarea>
+
+    <button class="save-btn" onclick="saveProfile()">Save Profile</button>
+  </div>
+
+  <script>
+    const profilePicInput = document.getElementById("profilePic");
+    const profilePicPreview = document.getElementById("profilePicPreview");
+
+    profilePicInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profilePicPreview.src = e.target.result;
+          localStorage.setItem("profilePic", e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function saveProfile() {
+      const fields = ["name", "email", "bio", "roll", "phone", "resume", "skills", "address"];
+      fields.forEach(id => localStorage.setItem("profile" + capitalize(id), document.getElementById(id).value));
+      alert("Profile saved!");
+    }
+
+    function loadProfile() {
+      const fields = ["name", "email", "bio", "roll", "phone", "resume", "skills", "address"];
+      const savedPic = localStorage.getItem("profilePic");
+      if (savedPic) profilePicPreview.src = savedPic;
+      fields.forEach(id => {
+        const value = localStorage.getItem("profile" + capitalize(id));
+        if (value) document.getElementById(id).value = value;
+      });
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    window.onload = loadProfile;
+  </script>
+</body>
+</html>

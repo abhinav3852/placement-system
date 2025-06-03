@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Repository – Placement Management System</title>
+  <style>
+    html, body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #141e30, #243b55);
+      color: #fff;
+      overflow-y: auto;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      color: #03e9f4;
+      text-shadow: 0 0 10px #03e9f4;
+      border-bottom: 1px solid #03e9f4;
+    }
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .nav-btn {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 15px;
+      color: #03e9f4;
+      text-decoration: none;
+      border: 1px solid #03e9f4;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: #03e9f4;
+      color: #000;
+      box-shadow: 0 0 10px #03e9f4, 0 0 40px #03e9f4;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto 40px;
+      padding: 0 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(3, 233, 244, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 16px;
+      border: 1px solid #03e9f4;
+      text-align: left;
+    }
+    th {
+      background-color: #03e9f4;
+      color: #000;
+    }
+    .download-link {
+      color: #03e9f4;
+      text-decoration: underline;
+      transition: 0.3s;
+    }
+    .download-link:hover {
+      color: #00f9ff;
+    }
+    .search-box {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 15px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      background: rgba(255,255,255,0.1);
+      color: #03e9f4;
+      outline: none;
+    }
+    .search-box::placeholder {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>Resume Repository</header>
+  <nav>
+     <a href="dashboard.html" class="nav-btn">DASHBOARD</a>
+     <a href="jobs.html" class="nav-btn">JOBS</a>
+     <a href="companies.html" class="nav-btn">COMPANIES</a>
+     <a href="profile.html" class="nav-btn">PROFILE</a>
+     <a href="applications.html" class="nav-btn">APPLICATIONS</a>
+     <a href="resume.html" class="nav-btn">RESUME</a>
+     <a href="interview.html" class="nav-btn">INTERVIEWS</a>
+	 <a href="analytics.html" class="nav-btn">ANALYTICS</a>
+  </nav>
+
+  <input type="text" id="resumeSearch" class="search-box" placeholder="Search by name, roll, or skill..." />
+
+  <div class="container">
+    <table id="resumeTable">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Roll Number</th>
+          <th>Department</th>
+          <th>Skills</th>
+          <th>Resume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample resumes -->
+        <tr><td>John Doe</td><td>123456</td><td>Computer Science</td><td>Java, React, SQL</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Priya Sharma</td><td>234567</td><td>Electronics</td><td>Embedded C, IoT, MATLAB</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Ravi Kumar</td><td>345678</td><td>Information Technology</td><td>Python, Django, HTML</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Aditi Mehra</td><td>456789</td><td>Electrical</td><td>AutoCAD, PLC, Power Systems</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Mohit Verma</td><td>567890</td><td>Mechanical</td><td>SolidWorks, CNC, Thermodynamics</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Neha Gupta</td><td>678901</td><td>IT</td><td>React, Node.js, MongoDB</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Arjun Nair</td><td>789012</td><td>Civil</td><td>AutoCAD, Revit, STAAD Pro</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Sana Sheikh</td><td>890123</td><td>Biomedical</td><td>Matlab, BioSim, Research</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Rahul Yadav</td><td>901234</td><td>Data Science</td><td>Python, R, Tableau</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Meena Iyer</td><td>012345</td><td>AI & ML</td><td>Machine Learning, Python, TensorFlow</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Tanmay Kulkarni</td><td>112233</td><td>Computer Science</td><td>Flutter, Firebase, Android</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Divya Jain</td><td>223344</td><td>Electronics</td><td>VHDL, Microcontrollers, C++</td><td><a class="download-link" href="#">Download</a></td></tr>
+        <tr><td>Karan Patel</td><td>334455</td><td>Mechanical</td><td>Catia, ANSYS, Project Design</td><td><a class="download-link" href="#">Download</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const searchBox = document.getElementById('resumeSearch');
+    const rows = document.querySelectorAll('#resumeTable tbody tr');
+
+    searchBox.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
