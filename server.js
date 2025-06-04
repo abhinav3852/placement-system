@@ -27,6 +27,6 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   // Only open browser locally
   if (process.env.NODE_ENV !== "production") {
-    open(http://localhost:${PORT}/welcome.html);
+    open(`http://localhost:${PORT}/welcome.html`);
   }
 });
