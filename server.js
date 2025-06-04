@@ -15,13 +15,21 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get("/", (req, res) => res.send("Backend Running"));
 
+HEAD
 const studentRoutes = require('./routes/studentRoutes');
+const studentRoutes = require("./routes/studentRoutes");
+65a6504981fd2d6d500aeecb8692324d19edb0a8
 app.use("/api/students", studentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
+HEAD
   console.log(🚀 Server running on port ${PORT});
   if (process.env.NODE_ENV !== "production") {
     open(http://localhost:${PORT}/welcome.html);
   }
 });
+  console.log(`🚀 Server running on port ${PORT}`);
+  open(`http://localhost:${PORT}/welcome.html`);
+});
+65a6504981fd2d6d500aeecb8692324d19edb0a8
